@@ -4,17 +4,17 @@
 
 ## simple
 
-```
+```go
 
-	r := NewHashRing()
-	r.Add("192.168.0.1", 100)
-	r.Add("192.168.0.2", 100)
+r := NewHashRing()
+r.Add("192.168.0.1", 100)
+r.Add("192.168.0.2", 100)
 
-    k, err := r.Get("test")
-    if err != nil {
-		log.Fatal(err)
-    }
+k, err := r.Get("test")
+if err != nil {
+    log.Fatal(err)
+}
 
-    fmt.Println(k) // output 192.168.0.1
+fmt.Println(k) // output 192.168.0.1
 
 ```

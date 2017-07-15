@@ -26,9 +26,8 @@ func (keys hashKeys) Swap(i, j int) {
 }
 
 var (
-	ErrEmpty           = errors.New("没有任何节点")
-	ErrNotFound        = errors.New("没找到相关key")
-	ErrUnValidReplicas = errors.New("虚拟节点数必须大于0")
+	ErrEmpty    = errors.New("没有任何节点")
+	ErrNotFound = errors.New("没找到相关key")
 )
 
 type HashRing struct {
@@ -48,9 +47,9 @@ func NewHashRing() *HashRing {
 }
 
 // 添加节点
-func (ring *HashRing) Add(nodeKey string, replicas int) error {
+func (ring *HashRing) Add(nodeKey string, replicas int) {
 	if replicas <= 0 {
-		return ErrUnValidReplicas
+		replicas = 1
 	}
 	ring.Lock()
 	defer ring.Unlock()
@@ -61,7 +60,6 @@ func (ring *HashRing) Add(nodeKey string, replicas int) error {
 	}
 	ring.nodeReplicas[nodeKey] = replicas
 	ring.sortHashKeys()
-	return nil
 }
 
 // 删除节点

@@ -2,7 +2,7 @@
 
 根据原理实现一次一致性hash算法, 加深了解
 
-## simple
+## example
 
 ```go
 
